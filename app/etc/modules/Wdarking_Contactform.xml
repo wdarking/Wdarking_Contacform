@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+<modules>
+    <Wdarking_Contactform>
+        <active>true</active>
+        <codePool>local</codePool>
+    </Wdarking_Contactform>
+</modules>
+</config>
