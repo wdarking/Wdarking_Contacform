@@ -2,7 +2,7 @@
 <layout version="0.1.0">
     <contacts_index_index>
         <reference name="contactForm">
-            <action method="setTemplate"><template>wdarking/contacts/form.phtml</template></action>
+            <block ifconfig="wdk_contactform/wdk_contactform_config/wdk_contactform_enabled" type="wdarking_contactform/form" name="contactForm" />
             <block type="core/text_list" name="form.additional.info">
                 <block type="captcha/captcha" name="captcha">
                     <reference name="head">

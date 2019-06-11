@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<config>
+      <sections>
+        <wdk_contactform  translate="label" module="wdarking_contactform">
+        <label>Contactform</label>
+        <tab>wdarking</tab>
+        <frontend_type>text</frontend_type>
+        <sort_order>0</sort_order>
+        <show_in_default>1</show_in_default>
+        <show_in_website>1</show_in_website>
+        <show_in_store>1</show_in_store>
+                    <groups>
+                      <wdk_contactform_config translate="label">
+                      <label>Configuration</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>0</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                       <fields>
+                          <wdk_contactform_enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </wdk_contactform_enabled>
+                          <wdk_contactform_subjectoptions translate="label">
+                              <label>Create Form Email Options</label>
+                              <frontend_model>wdarking_contactform/system_config_form_field_array_subjectoptions</frontend_model>
+                              <backend_model>adminhtml/system_config_backend_design_exception</backend_model>
+                              <sort_order>15</sort_order>
+                              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+                              <show_in_store>1</show_in_store>
+                              <comment>Add contact form custom email options</comment>
+                          </wdk_contactform_subjectoptions>
+                       </fields>
+                       </wdk_contactform_config>
+                    </groups>
+        </wdk_contactform>
+      </sections>
+</config>

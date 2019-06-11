@@ -33,6 +33,16 @@
                 </observers>
             </controller_action_predispatch_contacts_index_post>
         </events>
+        <helpers>
+          <wdarking_contactform>
+            <class>Wdarking_Contactform_Helper</class>
+          </wdarking_contactform>
+        </helpers>
+        <blocks>
+          <wdarking_contactform>
+            <class>Wdarking_Contactform_Block</class>
+          </wdarking_contactform>
+        </blocks>
     </global>
     <frontend>
         <layout>

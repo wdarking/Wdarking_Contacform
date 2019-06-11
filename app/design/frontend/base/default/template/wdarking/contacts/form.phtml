@@ -24,6 +24,9 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+
+<?php $subjectOptions = $this->getContactOptions(); ?>
+
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
 <div class="page-title">
     <h1><?php echo Mage::helper('contacts')->__('Contact Us') ?></h1>
@@ -34,6 +37,17 @@
         <p class="required"><?php echo Mage::helper('contacts')->__('* Required Fields') ?></p>
         <ul class="form-list">
             <li class="fields">
+        <?php if (count($subjectOptions) > 0): ?>
+                <div class="wide">
+                    <label class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Subject') ?></label>
+                <?php foreach ($subjectOptions as $subject): ?>
+                    <div class="input-box" class="required">
+                        <input type="radio" name="wdk_contactform_subject" id="option_<?php echo($subject['code']) ?>" value="<?php echo($subject['code']) ?>" class="input-radio validate-one-required-by-name">
+                        <label for="option_<?php echo($subject['code']) ?>" style="display: inline;"><?php echo($subject['title']) ?></label>
+                    </div>
+                <?php endforeach; ?>
+                </div>
+        <?php endif; ?>
                 <div class="field">
                     <label for="name" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Name') ?></label>
                     <div class="input-box">
