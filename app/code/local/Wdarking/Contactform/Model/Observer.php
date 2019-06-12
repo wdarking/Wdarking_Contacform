@@ -15,12 +15,29 @@ class Wdarking_Contactform_Model_Observer extends Mage_Captcha_Model_Observer
 
         if ($data = $controller->getRequest()->getPost()) {
             if (isset($data['wdk_contactform_subject'])) {
+
                 $selectedSubject = $data['wdk_contactform_subject'];
-                $subjectEmail = Mage::helper('wdarking_contactform/data')->getSubjectEmail($selectedSubject);
+                $subjectRecipientEmail = Mage::helper('wdarking_contactform/data')->getSubjectEmail($selectedSubject);
 
-                $data['email'] = $subjectEmail;
+                $dataObject = new Varien_Object();
+                $dataObject->setData($data);
 
-                $controller->getRequest()->setPost($data);
+                $mailTemplate = Mage::getModel('core/email_template');
+                /* @var $mailTemplate Mage_Core_Model_Email_Template */
+                $mailTemplate->setDesignConfig(array('area' => 'frontend'))
+                    ->setReplyTo($data['email'])
+                    ->sendTransactional(
+                        Mage::getStoreConfig('contacts/email/email_template'),
+                        Mage::getStoreConfig('contacts/email/sender_email_identity'),
+                        $subjectRecipientEmail,
+                        null,
+                        array('data' => $dataObject)
+                    );
+
+                if (!$mailTemplate->getSentSuccess()) {
+                    Mage::log("Wdarking_Contactform_Model_Observer: could not send email to {$subjectRecipientEmail}");
+                    Mage::log($data);
+                }
             }
         }
 
